@@ -1,0 +1,44 @@
+{{#each this}}
+ 
+ 
+    <li class="film-card" id="{{ id }}">
+        {{#if poster_path}}
+        <picture>
+        <source srcset="https://image.tmdb.org/t/p/w500/{{poster_path}} 1x, https://image.tmdb.org/t/p/original/{{poster_path}} 2x" type="image/jpeg" media="(min-width: 1024px)" />
+        <source srcset="https://image.tmdb.org/t/p/w342/{{poster_path}} 1x, https://image.tmdb.org/t/p/w780/{{poster_path}} 2x" type="image/jpeg" media="(min-width: 768px)" />               
+        <source srcset="https://image.tmdb.org/t/p/w342/{{poster_path}} 1x, https://image.tmdb.org/t/p/w780/{{poster_path}} 2x" type="image/jpeg" media="(min-width: 320px)" /> 
+        <img class="film-img" 
+        src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt=" {{ title }} "  loading="lazy" id="{{ id }}"  />
+        </picture>
+        {{else}}
+        <img class="film-img" 
+        src="https://www.freeiconspng.com/uploads/no-image-icon-6.png" alt=" {{ title }} "  loading="lazy" id="{{ id }}"  />
+        {{/if}}
+        <div class="film-description">
+       
+                 {{#if original_title}}
+      <p class="film-name"> {{ original_title }}  </p>
+                {{!-- {{else if }}
+      <p class="film-name"> {{ title }}  </p> --}}
+                {{/if}}
+            {{#if genre_ids}}
+      <span class="film-genre"> {{ genre_ids }} |</span>
+                {{/if}}
+                    {{#if genres}}
+      <span class="film-genre"> {{ genres }} |</span>
+                {{/if}}
+            {{#if release_date}}
+      <span class="film-year_of_issue"> {{ release_date }}  </span>
+                {{/if}}
+            {{#if vote_average}}
+      <span class="film-vote_average"> {{ vote_average }}  </span>
+                {{/if}} 
+    </div>
+            {{#if isButton}}
+    <button type="button" class="film-btn_card_remove"></button>
+            {{/if}} 
+
+    </li> 
+
+
+{{/each}}
